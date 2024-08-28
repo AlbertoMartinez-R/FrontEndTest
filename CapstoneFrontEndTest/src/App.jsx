@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import {Route, BrowserRouter as Router, Routes,} from "react-router-dom";
+import AdminDashboardPage from "./pages/AdminDashboardPage.jsx";
+import Navbar from "./components/Layout/Navbar.jsx";
+import Footer from "./components/Layout/Footer.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import RegisterPage from "./pages/RegisterPage.jsx";
+import FriendsPage from "./pages/FriendsPage.jsx";
+import StatisticsPage from "./pages/StatisticsPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
+import AllWords from "./components/Admin/AllWords.jsx";
+import AllUsers from "./components/Admin/AllUsers.jsx";
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <Router>
+            <div className="app">
+                {/* Navbar */}
+                <Navbar/>
+
+                {/* Main Content */}
+                <main>
+                    <Routes>
+                        <Route path="/admin/dashboard/words" element={<AllWords/>} />
+                        <Route path="/admin/dashboard/users" element={<AllUsers/>} />
+                        <Route path="/" element={<HomePage/>}/>
+                        <Route path="/admin" element={<AdminDashboardPage/>}/>
+                        <Route path="/login" element={<LoginPage/>}/>
+                        <Route path="/register" element={<RegisterPage/>}/>
+                        <Route path="/friends" element={<FriendsPage/>}/>
+                        <Route path="/statistics" element={<StatisticsPage/>}/>
+                        <Route path="/login" element={<RegisterPage/>}/>
+                        {/* Catch-all route for undefined paths */}
+                        <Route path="*" element={<NotFoundPage/>}/>
+                    </Routes>
+                </main>
+
+                {/* Footer */}
+                <Footer/>
+            </div>
+        </Router>
+    )
 }
 
 export default App

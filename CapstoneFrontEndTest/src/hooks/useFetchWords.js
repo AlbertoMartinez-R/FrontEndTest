@@ -1,9 +1,10 @@
-const apiURL = 'http://localhost:3032/api';
-export async function AdminfetchUsers() {
+import {apiURL} from "./api.js";
+
+export async function adminfetchWords() {
     try {
-        const response = await fetch(`${apiURL}/admin/all-users`);
+        const response = await fetch(`${apiURL}/words/admin/all-words`);
         if (!response.ok) {
-            throw new Error(response.statusText);
+            console.log("Error fetching words");
         }
         const data = await response.json();
         return data;
