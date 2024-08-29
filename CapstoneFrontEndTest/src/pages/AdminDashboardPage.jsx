@@ -1,4 +1,3 @@
-import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import { Button } from '@mui/material';
 import WordsTab from "../components/Admin/WordsTab.jsx";

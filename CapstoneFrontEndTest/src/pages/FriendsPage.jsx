@@ -1,11 +1,15 @@
 import React from 'react';
+import FriendList from "../components/Friends/FriendList.jsx";
+import RequestsList from "../components/Friends/FriendRequests.jsx";
+
 
 const FriendsPage = () => {
     return (
         <div className="friends-page">
-            <h2>Manage Friends</h2>
+            <h1>Manage Friends</h1>
             <p>Here you can manage your friends, send requests, and accept invitations.</p>
-            {/* Additional friend management components would go here */}
+            <div><FriendList/></div>
+            <div><RequestsList/></div>
         </div>
     );
 };

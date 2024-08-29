@@ -12,7 +12,7 @@ export async function adminfetchUsers() {
                     'Authorization': `Bearer ${token}`,
                 }
             }
-            );
+        );
         if (!response.ok) {
             console.log("Error fetching users");
         }

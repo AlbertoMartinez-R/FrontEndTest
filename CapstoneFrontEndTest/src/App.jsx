@@ -30,7 +30,7 @@ function App() {
                         <Route path="/admin" element={<AdminDashboardPage/>}/>
                         <Route path="/login" element={<LoginPage/>}/>
                         <Route path="/register" element={<RegisterPage/>}/>
-                        <Route path="/friends" element={<FriendsPage/>}/>
+                        <Route path="/friends/:username/friend-list" element={<FriendsPage/>}/>
                         <Route path="/statistics" element={<StatisticsPage/>}/>
                         <Route path="/login" element={<RegisterPage/>}/>
                         {/* Catch-all route for undefined paths */}
