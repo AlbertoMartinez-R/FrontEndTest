@@ -30,6 +30,11 @@ const Navbar = () => {
                     <Button color="inherit" component={Link} to="/register">
                         Register
                     </Button>
+
+                    <Button color="inherit" component={Link} to="/leaderboard">
+                        Leaderboard
+                    </Button>
+
                     {isAdmin && (
                         <Button color="inherit" component={Link} to="/admin">
                             Admin Dashboard

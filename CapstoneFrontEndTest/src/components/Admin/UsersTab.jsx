@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {adminfetchUsers} from "../../hooks/useFetchUsers.js";
+import {adminfetchUsers} from "./hooks/useFetchUsers.js";
 
 export default function UsersTab() {
     const [users, setUsers] = useState([]);
@@ -9,14 +9,8 @@ export default function UsersTab() {
         const getMinUsers = async () => {
             try {
                 const response = await adminfetchUsers();
-
-                console.log(response);
-
                 const minUsers = response.slice(0, 5);
-                console.log(minUsers);
-
                 setUsers(minUsers);
-
             } catch (error) {
                 console.error('Failed to fetch all users!', error);
             }

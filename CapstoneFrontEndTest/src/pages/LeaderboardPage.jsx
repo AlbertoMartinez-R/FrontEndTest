@@ -1,0 +1,7 @@
+const LeaderboardPage = () => {
+    return (
+        <>
+            <LeaderboardPage/>
+        </>
+    );
+}

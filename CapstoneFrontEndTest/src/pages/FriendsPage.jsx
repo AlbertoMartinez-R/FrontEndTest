@@ -1,4 +1,3 @@
-import React from 'react';
 import FriendList from "../components/Friends/FriendList.jsx";
 import RequestsList from "../components/Friends/FriendRequests.jsx";
 

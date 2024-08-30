@@ -1,4 +1,4 @@
-import {apiURL} from "./api.js";
+import {apiURL} from "../../../hooks/api.js";
 
 export async function adminfetchUsers() {
     const token = localStorage.getItem('authToken');
@@ -21,4 +21,4 @@ export async function adminfetchUsers() {
     } catch (error) {
         console.error(error)
     }
-}
+};

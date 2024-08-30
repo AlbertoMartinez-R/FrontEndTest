@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {adminfetchUsers} from "../../hooks/useFetchUsers.js";
+import {adminfetchUsers} from "./hooks/useFetchUsers.js";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';

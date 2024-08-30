@@ -24,6 +24,7 @@ function App() {
                 {/* Main Content */}
                 <main>
                     <Routes>
+                        <Route path="/leaderboard" element={<HomePage/>}/>
                         <Route path="/admin/dashboard/words" element={<AllWords/>} />
                         <Route path="/admin/dashboard/users" element={<AllUsers/>} />
                         <Route path="/" element={<HomePage/>}/>

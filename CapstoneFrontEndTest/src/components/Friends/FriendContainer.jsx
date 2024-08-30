@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {fetchFriends} from "../../hooks/useFetchFriends.js";
+import {fetchFriends} from "./hooks/useFetchFriends.js";
 import {Card, CardContent, Typography, Grid} from '@mui/material';
 
 export default function FriendContainer() {

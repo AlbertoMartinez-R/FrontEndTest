@@ -9,12 +9,8 @@ export default function WordsTab() {
         const getMinWords = async () => {
             try {
                 const response = await adminfetchWords();
-                    console.log(response);
-
                 const minWords = response.slice(0, 5);
-                    console.log(minWords);
                 setWords(minWords);
-
             } catch (error) {
                 console.error('Failed to fetch all words!', error);
             }
