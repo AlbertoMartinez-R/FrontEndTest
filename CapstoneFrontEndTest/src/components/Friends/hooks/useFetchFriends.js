@@ -60,7 +60,7 @@ export async function acceptFriendRequest(friend_username) {
         console.log("Error accepting friend request:", error);
     }
 };
-
+// Function to decline friend requests
 export async function declineFriendRequest(friend_username) {
     const userData = JSON.parse(localStorage.getItem("userData"));
     const user_username = userData.username;

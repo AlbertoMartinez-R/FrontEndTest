@@ -1,13 +1,20 @@
-import React from 'react';
+import {Box, Divider} from '@mui/material';
+import StatsUser from "../components/Statistics/UserStats.jsx";
+import GameStats from "../components/Statistics/GamesStats.jsx";
+import GuessStats from "../components/Statistics/GuessesStats.jsx";
 
 const StatisticsPage = () => {
-    return (
-        <div className="statistics-page">
-            <h2>Game Statistics</h2>
-            <p>Review your game statistics, track your progress, and compare with friends.</p>
-            {/* Statistical components like charts or tables would go here */}
-        </div>
-    );
+
+    return (<div className="statistics-page">
+        <Box sx={{padding: 2}}>
+            <StatsUser/>
+            <Divider sx={{my: 1}}/>
+            <GameStats/>
+            <Divider sx={{my: 5}}/>
+            <GuessStats/>
+        </Box>
+
+    </div>);
 };
 
 export default StatisticsPage;

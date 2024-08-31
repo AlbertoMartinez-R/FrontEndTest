@@ -11,6 +11,7 @@ import StatisticsPage from "./pages/StatisticsPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import AllWords from "./components/Admin/AllWords.jsx";
 import AllUsers from "./components/Admin/AllUsers.jsx";
+import LeaderboardPage from "./pages/LeaderboardPage.jsx";
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
                 {/* Main Content */}
                 <main>
                     <Routes>
-                        <Route path="/leaderboard" element={<HomePage/>}/>
+                        <Route path="/leaderboard" element={<LeaderboardPage/>}/>
                         <Route path="/admin/dashboard/words" element={<AllWords/>} />
                         <Route path="/admin/dashboard/users" element={<AllUsers/>} />
                         <Route path="/" element={<HomePage/>}/>
