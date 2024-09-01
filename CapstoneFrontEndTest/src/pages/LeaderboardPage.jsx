@@ -5,7 +5,6 @@ const LeaderboardPage = () => {
         <>
             <div className="conainer">
             <LeaderboardContainer/>
-
             </div>
         </>
     );

@@ -15,8 +15,6 @@ function GuessesStats() {
         stats();
     }, []);
 
-    console.log(guesses);
-
     const pieData = [
         {name: 'Guess 1', value: guesses.guess_1 || 0},
         {name: 'Guess 2', value: guesses.guess_2 || 0},

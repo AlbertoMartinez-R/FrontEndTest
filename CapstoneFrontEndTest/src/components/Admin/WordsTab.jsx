@@ -1,9 +1,15 @@
 import {useEffect, useState} from 'react';
-import {adminfetchWords} from "../../hooks/useFetchWords.js";
+import {adminfetchWords} from "./hooks/useFetchWords.js";
+import {Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from '@mui/material';
+import {useNavigate} from "react-router-dom";
 
 export default function WordsTab() {
     const [words, setWords] = useState([]);
+    const navigate = useNavigate();
 
+    const handleWordClick = () => {
+        navigate('/admin/dashboard/words');
+    };
 
     useEffect(() => {
         const getMinWords = async () => {
@@ -12,26 +18,37 @@ export default function WordsTab() {
                 const minWords = response.slice(0, 5);
                 setWords(minWords);
             } catch (error) {
-                console.error('Failed to fetch all words!', error);
+                console.error('Failed to fetch words!', error);
             }
         };
         getMinWords();
-    }, [])
-
-    const handleWordClick = () => {
-        navigate('/admin/AllWords')
-    };
+    }, []);
 
     return (
-        <div>
-            <h1>Words Table</h1>
-            <ul>
-                {words.map(word => (
-                    <li key={word.id}>
-                        {word.id}: {word.word}
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <>
+            <TableContainer component={Paper}>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>ID</TableCell>
+                            <TableCell>Word</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {words.map(word => (
+                            <TableRow key={word.id}>
+                                <TableCell>{word.id}</TableCell>
+                                <TableCell>{word.word}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+                <Button variant="contained" color="primary" onClick={handleWordClick}>
+                    See All Words
+                </Button>
+            </Box>
+        </>
     );
 }

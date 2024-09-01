@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {adminfetchWords} from "../../hooks/useFetchWords.js";
+import {adminfetchWords} from "./hooks/useFetchWords.js";
 
 export default function AllWords() {
     const [words, setWords] = useState([]);

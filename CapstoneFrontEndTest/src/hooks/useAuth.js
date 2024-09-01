@@ -1,3 +1,4 @@
+import {apiURL} from "./api.js";
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,7 +10,6 @@ export const useAuth = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Check if there is a token in localStorage
         const savedToken = localStorage.getItem('authToken');
         const savedUser = JSON.parse(localStorage.getItem('userData'));
 
@@ -23,7 +23,7 @@ export const useAuth = () => {
 
     const login = async ({ username, password }) => {
         try {
-            const response = await fetch('http://localhost:3032/api/users/login', {
+            const response = await fetch(`${apiURL}/users/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -39,14 +39,45 @@ export const useAuth = () => {
                 setIsAuthenticated(true);
                 setIsAdmin(data.admin);
 
-                // Save token and user data in localStorage for a week
+                // Save token and user data in localStorage
                 localStorage.setItem('authToken', data.token);
                 localStorage.setItem('userData', JSON.stringify({ username, admin: data.admin }));
 
-                navigate('/');
-
+                navigate('/account'); // Redirect after login
             } else {
                 throw new Error(data.message || 'Login failed');
+            }
+        } catch (error) {
+            alert(error.message); // Handle errors
+        }
+    };
+
+    const register = async ({ username, password }) => {
+        try {
+            const response = await fetch(`${apiURL}/users/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Automatically log in the user after successful registration
+                setToken(data.token);
+                setUser({ username, admin: data.admin });
+                setIsAuthenticated(true);
+                setIsAdmin(data.admin);
+
+                // Save token and user data in localStorage
+                localStorage.setItem('authToken', data.token);
+                localStorage.setItem('userData', JSON.stringify({ username, admin: data.admin }));
+
+                navigate('/'); // Redirect after registration
+            } else {
+                throw new Error(data.message || 'Registration failed');
             }
         } catch (error) {
             alert(error.message); // Handle errors
@@ -60,7 +91,7 @@ export const useAuth = () => {
         setUser(null);
         localStorage.removeItem('authToken');
         localStorage.removeItem('userData');
-        navigate('/login'); // Redirect to login page
+        navigate('/authenticate');
     };
 
     return {
@@ -69,6 +100,7 @@ export const useAuth = () => {
         user,
         token,
         login,
+        register,
         logout,
     };
 };
