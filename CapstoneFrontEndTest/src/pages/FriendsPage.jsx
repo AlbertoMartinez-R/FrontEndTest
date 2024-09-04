@@ -1,15 +1,22 @@
-import FriendListContainer from "../components/Friends/FriendContainer.jsx";
+import FriendListContainer from "../components/Friends/FriendListContainer.jsx";
 import FriendReqContainer from "../components/Friends/FriendReqContainer.jsx";
+import {Box, Paper, Typography} from "@mui/material";
+import SearchFriendContainer from "../components/Friends/SearchFriendContainer.jsx";
+
 
 
 const FriendsPage = () => {
     return (
-        <div className="friends-page">
-            <h1>Manage Friends</h1>
-            <p>Here you can manage your friends, send requests, and accept invitations.</p>
-            <div><FriendListContainer/></div>
-            <div><FriendReqContainer/></div>
-        </div>
+        <Box sx={{justifyContent: "center", padding: "10px" }} >
+            <Typography variant="h4" component="div">
+                Manage Friends
+            </Typography>
+            <Box sx={{display: "flex", justifyContent: "center"}}>
+                <FriendListContainer/>
+                <SearchFriendContainer/>
+                <FriendReqContainer/>
+            </Box>
+        </Box>
     );
 };
 

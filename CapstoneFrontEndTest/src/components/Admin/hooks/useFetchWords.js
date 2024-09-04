@@ -50,7 +50,7 @@ export async function fetchMonthlyWords() {
     }
 }
 
-
+// Function to fetch get word of the Day
 export async function fetchWordOfTheDay() {
         try {
             const response = await fetch(`${apiURL}/words/wordOf/todaysWord`, {
@@ -62,9 +62,7 @@ export async function fetchWordOfTheDay() {
             if (!response.ok) {
                 console.log("Error fetching words");
             }
-
-            const data = await response.json();
-            return data;
+            return await response.json();
         } catch (e) {
             console.error('Failed to get word of the day!');
             console.error(e);

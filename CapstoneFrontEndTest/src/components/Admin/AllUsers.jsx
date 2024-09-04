@@ -11,11 +11,12 @@ import Paper from '@mui/material/Paper';
 export default function AllUsers() {
     const [users, setUsers] = useState([]);
 
+    const getAllUsers = async () => {
+        const response = await adminfetchUsers();
+        setUsers(response);
+    };
+
     useEffect(() => {
-        const getAllUsers = async () => {
-            const response = await adminfetchUsers();
-            setUsers(response);
-        };
         getAllUsers();
     }, [])
 
@@ -51,6 +52,5 @@ export default function AllUsers() {
                 </Table>
             </TableContainer>
         </>
-
     );
 };

@@ -12,6 +12,7 @@ import LeaderboardPage from "./pages/LeaderboardPage.jsx";
 import AppBar from "./components/Layout/AppBar.jsx";
 import LoginRegisterPage from "./pages/LoginRegisterPage.jsx";
 import AllMonthlyWords from "./components/Admin/WordsCalendar.jsx";
+import GamePage from "/src/pages/GamesPage.jsx";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
                         <Route path="/friends/:username/friend-list" element={<FriendsPage/>}/>
                         <Route path="/statistics" element={<StatisticsPage/>}/>
                         <Route path="/authenticate" element={<LoginRegisterPage/>}/>
+                        <Route path="/game" element={<GamePage/>}/>
                         {/* Catch-all route for undefined paths */}
                         <Route path="*" element={<NotFoundPage/>}/>
                     </Routes>

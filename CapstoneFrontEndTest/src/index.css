@@ -6,6 +6,11 @@
     --text-color: #212529;
 }
 
+main {
+    display: flex;
+    justify-content: center;
+}
+
 /* Style */
 root {
   margin: 0 auto;

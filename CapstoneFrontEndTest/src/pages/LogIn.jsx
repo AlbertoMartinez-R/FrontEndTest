@@ -1,39 +1,40 @@
-import * as React from 'react';
 import {
+    Box,
     Button,
     FormControl,
+    IconButton,
+    InputAdornment,
     InputLabel,
     OutlinedInput,
-    InputAdornment,
-    IconButton,
     TextField,
-    Box,
     Typography,
 } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
+import {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {useAuth} from '../hooks/useAuth';
 
 export default function LogInComponent() {
-    const { login } = useAuth();
+    const {login} = useAuth();
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
+    const [userCheck, setUserCheck] = useState(false);
 
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleMouseDownPassword = (event) => event.preventDefault();
 
+
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            await login({ username, password });
+            await login({username, password});
             window.location.reload();
-            navigate('/');
+            navigate('/account');
         } catch (err) {
             console.error('Failed to log in', err);
             setError('Login failed. Please try again.');
@@ -41,7 +42,7 @@ export default function LogInComponent() {
     };
 
     return (
-        <Box component="form" onSubmit={handleLogin} sx={{ mt: 2 }}>
+        <Box component="form" onSubmit={handleLogin} sx={{mt: 2}}>
             <Typography variant="h5" gutterBottom>
                 Log In
             </Typography>
@@ -60,12 +61,12 @@ export default function LogInComponent() {
                 InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
-                            <AccountCircle />
+                            <AccountCircle/>
                         </InputAdornment>
                     ),
                 }}
             />
-            <FormControl sx={{ my: 2 }} fullWidth variant="outlined">
+            <FormControl sx={{my: 2}} fullWidth variant="outlined">
                 <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                 <OutlinedInput
                     id="outlined-adornment-password"
@@ -80,7 +81,7 @@ export default function LogInComponent() {
                                 onMouseDown={handleMouseDownPassword}
                                 edge="end"
                             >
-                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                {showPassword ? <VisibilityOff/> : <Visibility/>}
                             </IconButton>
                         </InputAdornment>
                     }
@@ -92,7 +93,7 @@ export default function LogInComponent() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{mt: 3, mb: 2}}
             >
                 Sign In
             </Button>
