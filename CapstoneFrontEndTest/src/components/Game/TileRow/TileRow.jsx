@@ -135,7 +135,7 @@ export default function TileRow({
                                     padding: '0',
                                     border: 'none',
                                     backgroundColor: 'transparent',
-                                    color: cellDisabled ? 'white' : 'black',
+                                    color: cellDisabled ? 'black' : 'black',
                                     fontSize: '40px',
                                     fontWeight: 'bold',
                                 }}

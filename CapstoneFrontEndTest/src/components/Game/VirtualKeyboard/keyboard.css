@@ -1,0 +1,43 @@
+/* Define the color for keys with the 'correct' status */
+.hg-green {
+    background-color: green !important;
+    color: white; /* Optional: make text more readable */
+}
+
+/* Define the color for keys with the 'partial' status */
+.hg-yellow {
+    background-color: yellow !important;
+    color: black; /* Optional: make text more readable */
+}
+
+/* Define the color for keys with the 'incorrect' status */
+.hg-gray {
+    background-color: gray !important;
+    color: white; /* Optional: make text more readable */
+}
+
+/* Additional styles to ensure consistent button appearance */
+.simple-keyboard .hg-button {
+    border-radius: 5px;
+    margin: 2px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Styling for Backspace and Enter keys */
+.hg-button[data-skbtn="{bksp}"],
+.hg-button[data-skbtn="{enter}"] {
+    width: 100px; /* Adjust width to fit your layout */
+    background-color: lightgray; /* Default color */
+    color: black;
+}
+
+/* Change color of Backspace and Enter when active */
+.hg-button.hg-green[data-skbtn="{bksp}"],
+.hg-button.hg-green[data-skbtn="{enter}"],
+.hg-button.hg-yellow[data-skbtn="{bksp}"],
+.hg-button.hg-yellow[data-skbtn="{enter}"],
+.hg-button.hg-gray[data-skbtn="{bksp}"],
+.hg-button.hg-gray[data-skbtn="{enter}"] {
+    background-color: inherit; /* Inherit the color set dynamically */
+}

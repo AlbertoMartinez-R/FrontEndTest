@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import getStatusColor from "../TileRow/StatusColor";
 
-export default function VirtualKeyboard({guessStatus, activeRow, fullGuess}){
+export default function Keyboard({guessStatus, activeRow, fullGuess}){
     const [qwertyTop, setQwertyTop] = useState({"q":"", "w":"", "e":"", "r":"", "t":"", "y":"", "u":"", "i":"", "o":"", "p":""})
     const [qwertyMid, setQwertyMid] = useState({"a":"", "s":"", "d":"", "f":"", "g":"", "h":"", "j":"", "k":"", "l":""})
     const [qwertyBot, setQwertyBot] = useState({"z":"", "x":"", "c":"", "v":"", "b":"", "n":"", "m":""})

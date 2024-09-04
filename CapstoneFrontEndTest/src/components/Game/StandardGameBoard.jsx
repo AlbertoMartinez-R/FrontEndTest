@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import TileRow from './TileRow/TileRow';
-import VirtualKeyboard from "./VirtualKeyboard/keyboard";
+import VirtualKeyboard from "./VirtualKeyboard/VirtualKeyboard.jsx";
 import getCurrentDayOfYearEST from "./DateHandler";
 import StopWatch from "./Stopwatch/Stopwatch";
 import {Box, Button, Paper} from "@mui/material";
@@ -29,7 +29,8 @@ export default function StandardGameBoard({
     const currentDate = getCurrentDayOfYearEST();
 // console.log(`Today's date of ${currentDate} / 365`)
 
-    const username = sessionStorage.getItem('username')
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    const username = userData.username;
     const token = sessionStorage.getItem('usertoken')
 
     const handleRowComplete = (rowIndex) => {
@@ -65,21 +66,21 @@ export default function StandardGameBoard({
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`,
                 },
                 body: JSON.stringify({username: username, last_played: currentDate})
             });
             const info = await response.json();
             console.log(info);
-        } catch (e) {
-            console.error('Failure to update last played date')
+        } catch (error) {
+            console.error('Failure to update last played date', error);
         }
         try {
             const response = await fetch('http://localhost:3032/api/game/regular', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`
                 },
                 body: JSON.stringify({username: username, correctGuess: correctGuess, attempts: attempts, word: word})
             });
