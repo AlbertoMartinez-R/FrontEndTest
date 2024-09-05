@@ -62,3 +62,26 @@ footer.footer {
         --accent: #1b96a1;
     }
 }
+
+.home-buttons {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+  }
+  
+  .home-buttons a {
+    /* text-decoration: none;  */
+    color: #007bff; 
+    font-size: 1.2rem; 
+    margin: 10px; 
+    padding: 5px 10px; 
+    border-radius: 5px; 
+    background-color: #f8f9fa; 
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .home-buttons a:hover {
+    background-color: #007bff; 
+    color: #ffffff; 
+  }
